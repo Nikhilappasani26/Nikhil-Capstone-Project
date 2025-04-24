@@ -1,156 +1,141 @@
-# Nikhil-Capstone-Project
-💳 Credit Default Prediction: A Machine Learning & Deep Learning Approach
-🚨 Problem Statement
-Credit default—when borrowers fail to repay loans—poses a serious risk to financial institutions. Traditional risk assessment relies heavily on manual review and basic scoring, which are:
+# 💳 Credit Default Prediction  
+### 🔍 Machine Learning & Deep Learning for Financial Risk Forecasting  
 
-Time-consuming
+---
 
-Inaccurate
+## 🧠 What Problem Did I Try to Solve?
 
-Not scalable
+> **Credit default** — when borrowers fail to repay — is a **critical challenge** for financial institutions.  
+> Traditional credit risk systems are **manual, error-prone, and slow**.  
 
-This project aims to automate and optimize the credit risk prediction process using Random Forest and Neural Network models, leveraging customer financial and behavioral data.
+🎯 **Goal**: Use **ML & DL models** to build a **predictive system** that automates and improves the accuracy of loan default prediction — using customer financial, demographic, and behavioral data.
 
-🎯 Project Goals
-This repository delivers a complete solution that includes:
+This repo includes:
+- 📊 Data Analysis
+- 🤖 ML & DL Model Training
+- 🖥️ Streamlit Dashboard
+- 🧠 SHAP-based Explainable AI
 
-End-to-end data analysis and modeling
+---
 
-Predictive classification using ML & DL
+## 🚀 Why This Project Matters
 
-A Streamlit-powered dashboard for interactive credit risk prediction
+### 🏦 Financial Impact  
+Helps reduce **non-performing loans** and boosts financial stability.
 
-Model explainability using SHAP values
+### 🧠 Smart Automation  
+Real-time predictions with **explainable AI** models.
 
-🌍 Why This Project Matters
-🏦 Financial Stability
-Minimizing default risk is key to maintaining healthy loan portfolios.
+### 📈 Industry Use Case  
+Streamlines loan assessments for banks, lenders, and credit platforms.
 
-⚙️ Innovation in FinTech
-Automation with interpretable AI enables real-time and scalable credit scoring.
+---
 
-🚀 Operational Efficiency
-AI-driven tools reduce reliance on human analysts and accelerate decision-making.
+## 👥 Who Will Benefit?
 
-👥 Target Audience
-🏛 Banks & Lending Institutions
+- 🏛 **Banks & Lending Institutions**  
+- 💼 **FinTech Startups**  
+- 📊 **Credit Risk Analysts**  
+- 📜 **Policy Makers & Financial Auditors**
 
-💼 FinTech Companies
+---
 
-📊 Credit Risk Analysts
+## 🧾 Table of Contents
 
-📜 Regulatory Authorities & Policy Makers
+- [📁 Dataset](#-dataset)
+- [📊 Exploratory Data Analysis](#-exploratory-data-analysis)
+- [⚙️ Modeling](#️-modeling)
+- [📉 Results](#-results)
+- [🧠 Explainability](#-explainability)
+- [🖥️ Streamlit Dashboard](#️-streamlit-dashboard)
+- [🛠 How to Run the App](#-how-to-run-the-app)
+- [📜 License](#-license)
 
-📁 Project Structure
-mathematica
-Copy
-Edit
-📦 Credit-Default-Prediction
- ┣ 📄 Nikhil_app.py               → Streamlit web app
- ┣ 📄 random_forest.pkl           → Trained Random Forest model
- ┣ 📄 credit_score_dataset.csv    → Dataset file
- ┗ 📄 README.md                   → Project documentation
-📊 Dataset Overview
-Source: Kaggle – Credit Score Dataset
+---
 
-Size: ~1000 customer records | 84 features
+## 📁 Dataset
 
-Important Features:
+- **Source**: [Kaggle – Credit Score Dataset](https://www.kaggle.com/datasets/conorsully1/credit-score)  
+- **Size**: ~1000 records, 84 features  
+- **Key Fields**:
+  - `CREDIT_SCORE` – Numeric score  
+  - `DEFAULT` – Target label (1 = Default, 0 = No Default)  
+  - Financial Ratios: `R_SAVINGS_INCOME`, `R_DEBT_INCOME`, `R_DEBT_SAVINGS`  
+  - Spending: `T_GROCERIES_6`, `T_HEALTH_12`  
+  - Flags: Credit card, mortgage, dependents
 
-CREDIT_SCORE
+---
 
-DEFAULT (0 = No Default, 1 = Default)
+## 📊 Exploratory Data Analysis
 
-Ratios: R_SAVINGS_INCOME, R_DEBT_INCOME, R_DEBT_SAVINGS
+### 📌 Key Insights:
+- 🔺 **Imbalanced** classes: fewer defaults  
+- 📉 **Right-skewed** data in income, savings, debt  
+- 🧩 Behavior links: gambling & entertainment → high default probability
 
-Expenditures: T_GROCERIES_6, T_HEALTH_12, etc.
+### 📈 Visuals Used:
+- 📊 Histograms  
+- 🐝 Swarm plots  
+- 🎻 Violin plots  
+- 📦 Box plots  
 
-Categorical flags: credit card ownership, mortgage, dependents
+---
 
-🔍 Key Insights from Data Exploration
-Label Imbalance: Fewer defaulters than non-defaulters
+## ⚙️ Modeling
 
-Feature Skew: Right-skewed income, savings, and debt values
+### 1️⃣ **Random Forest Classifier**
+- ✅ Ensemble of decision trees  
+- ✅ Reduced overfitting  
+- ✅ Features selected using `SelectKBest`
 
-Behavioral Patterns: Spending on gambling/entertainment linked to default risk
+### 2️⃣ **Fine-Tuned Neural Network**
+- 🔗 Layers: 128 → 64 → 32 neurons  
+- 🧱 Batch Normalization, Dropout  
+- 🧠 Loss: Binary Cross-Entropy | Optimizer: Adam  
+- ⏱ Early Stopping | 🔧 Learning Rate Tuned  
 
-Visuals Used: Histograms, swarm plots, violin plots, boxplots
+📌 **Data Split**: 80% Train / 20% Test
 
-🤖 Modeling Approach
-1️⃣ Random Forest Classifier
-Ensemble method with decision trees
+---
 
-Reduces overfitting and handles complex interactions
+## 📉 Results
 
-Trained using top features selected by SelectKBest
+| 🧪 Model            | 🎯 Accuracy |
+|---------------------|-------------|
+| ✅ Random Forest     | 71.5%        |
+| 🚀 Neural Network    | **74.0%**    |
 
-2️⃣ Fine-Tuned Neural Network
-Architecture: 3 layers with 128, 64, 32 neurons
+> 🧠 Neural Network outperformed Random Forest  
+> 📉 Metrics: Precision, Recall, F1 Score evaluated for both
 
-Optimized using:
+---
 
-Dropout
+## 🧠 Explainability
 
-Batch Normalization
+### 🔍 SHAP (SHapley Additive exPlanations)
+- 🎯 Local & global feature impact  
+- 📊 Visual interpretation of how each feature affects the outcome
 
-Early Stopping
+### 🌟 Top Influencing Features:
+- `CREDIT_SCORE`  
+- `CAT_CREDIT_CARD`  
+- `R_DEBT_INCOME`  
+- `R_DEBT_SAVINGS`
 
-Adam Optimizer (Binary Cross-Entropy Loss)
+---
 
-Achieved better generalization through learning rate tuning
+## 🖥️ Streamlit Dashboard
 
-📈 Train/Test Split: 80% train | 20% test
+An interactive **web-based tool** built with `Streamlit` to:
 
-🏆 Model Performance
+✅ Input borrower info  
+✅ Predict default risk in real-time  
+✅ Visualize feature impact using **SHAP**  
 
-Model	Accuracy
-Random Forest	71.5%
-Neural Network	74.0%
-Neural Network provided superior performance
+> Ideal for **financial professionals** making live lending decisions.
 
-Both models are strong but can improve with larger datasets
+---
 
-🔎 Explainable AI with SHAP
-SHAP (SHapley Additive exPlanations) was used to:
+## 🛠 How to Run the App
 
-Explain individual predictions
-
-Highlight feature contributions
-
-Enable transparency for stakeholders
-
-🧠 Top Contributing Features:
-
-CREDIT_SCORE
-
-CAT_CREDIT_CARD
-
-R_DEBT_INCOME
-
-🖥 Streamlit Web Application
-A user-friendly, interactive dashboard built using Streamlit allows stakeholders to:
-
-✅ Input borrower data
-✅ Get instant default risk prediction (High/Low)
-✅ View feature impact using SHAP
-✅ Make real-time loan decisions
-
-🚀 How to Launch the App Locally
-🗂 Place These Files in One Folder:
-credit_score_dataset.csv
-
-Nikhil_app.py
-
-random_forest.pkl
-
-🛠 Install dependencies (if not already):
-bash
-Copy
-Edit
-pip install streamlit pandas numpy scikit-learn shap
-▶️ Run the app:
-bash
-Copy
-Edit
-streamlit run Nikhil_app.py
-This will open a browser window where you can interact with the credit risk dashboard.
+### 📂 Folder Structure:
